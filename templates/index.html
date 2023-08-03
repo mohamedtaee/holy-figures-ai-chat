@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talk To AI</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/clerk/style.css') }}">
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="../static/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/vendors/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/vendors/clerk/style.css" rel="stylesheet" type="text/css">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/submitUtils.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/userUtils.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/dropdownUtils.js') }}" defer></script>
+
+
+</head>
+<body>
+<script type="text/javascript" src="../static/js/dropdownUtils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+
+
+<div class="container-md">
+
+    <div class="row title-row">
+        <div class="col-md-12">
+            <h1>Talk To AI</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="row question-box">
+                <p class="text-end text-break" id="question-textarea"></p>
+            </div>
+
+            <div class="row answer-box">
+                <p class="text-start text-break" id="answer-textarea"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DROPDOWN ITEMS -->
+    <div class="row justify-content-evenly">
+        <div class="form-group col-3">
+            <div class="dropdown">
+                <select class="form-control" id="initialDropdown" onchange="updateSecondaryDropdown()">
+                    <option value="">Select Holy Book</option>
+                    <option value="bible">King James Bible</option>
+                    <option value="quran">Quran</option>
+                    <option value="torah">Torah</option>
+                    <option value="book_of_mormon">Book of Mormon</option>
+                    <option value="vedas">Vedas</option>
+                    <option value="iliad">Iliad or Odyssey</option>
+                    <option value="book_of_the_dead">Book of the Dead</option>
+                    <option value="scientology">The Scientology Handbook</option>
+                </select>
+                <div class="custom-caret">
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-3">
+            <div class="dropdown">
+                <select class="form-control" id="secondaryDropdown">
+                    <!-- options are dynamically added here -->
+                </select>
+                <div class="custom-caret">
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <p></p>
+    </div>
+
+
+    <!-- QUESTION INPUT -->
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="question-input"
+                       oninput="changeSubmitBtnStatus()"
+                       placeholder="Type your question" aria-label="god-question"
+                       aria-describedby="submit-btn">
+                <button class="btn btn-outline-secondary" type="button" id="submit-btn" disabled>
+                    <i class="fa-solid fa-paper-plane" id="submit-btn-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div>
+            <p id="questions-remaining"></p>
+        </div>
+    </div>
+
+    <!-- CLERK AUTHENTICATION -->
+    <div id="auth-links">
+        <button class="btn btn-outline-secondary" onclick="Clerk.openSignUp()">Sign Up</button>
+        <button class="btn btn-outline-primary" onclick="Clerk.openSignIn()">Sign In</button>
+    </div>
+
+    <div id="user-button"></div>
+
+    <div id="no-frontend-api-warning" hidden>
+        <h3>No Frontend API found</h3>
+        <h4>Add it to the top of <code>src/script.js</code>.</h4>
+    </div>
+
+    <div>
+        <p id="welcome-name">Welcome!</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='vendors/clerk/script.js') }}" async crossorigin="anonymous"></script>
+
+</div>
+</body>
+</html>

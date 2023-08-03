@@ -1,0 +1,51 @@
+.title-row {
+    color: black;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+}
+
+.submit-btn {
+    color: black;
+}
+
+#submit-btn {
+    background-color: #19c37d;
+}
+
+.fa-paper-plane {
+    color: white;
+}
+
+#submit-btn:disabled {
+    background-color: white;
+}
+
+#submit-btn:disabled .fa-paper-plane {
+    color: #b6b4b4;
+}
+
+.question-box {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+    background-color: #efefef;
+}
+
+.answer-box {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+    background-color: #eeffed;
+}
+
+
+.custom-caret {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  pointer-events: none;
+}
+
